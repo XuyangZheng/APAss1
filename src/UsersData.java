@@ -27,7 +27,7 @@ public class UsersData {
         return balance;
     }*/
     
-    public double checkUserID(String ID){
+    public static double checkUserID(String ID){
         double balance = 0;
         try{
             balance = users.get(ID).getBalance();
@@ -36,5 +36,7 @@ public class UsersData {
             
         }return balance;
     }
+    
+    
     
 }

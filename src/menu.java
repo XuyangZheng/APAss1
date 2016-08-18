@@ -118,7 +118,7 @@ public class menu {
         }
     }
     
-    private void purchaseZoneTwoTwoHoursPass(String id,double balance){
+    private void purchaseZoneTwoTwoHoursPass(String id,double balance){ //make purchase of 2hours zone1&2
         try{
             if(balance - 5.0<0){
                 throw new NoEnoughFundExcpetion("No enough Fund in your card");
@@ -131,7 +131,48 @@ public class menu {
         }
     }
     
-    private void purchaseOneDayPass(String id,double balance){
-        
+    private void purchaseOneDayPass(String id,double balance){ //day pass menu
+        int m;
+        do{
+            zoneMenu();
+            m=keyPad.nextInt();
+            switch(m){
+                case 1: purchaseZoneOneDayPass(id,balance);
+                    break;
+                case 2: purchaseZoneTwoDayPass(id,balance);
+                    break;
+                case 0: menuRun();
+                    break;
+                default:
+                    System.out.println("Invalid Input, Try again.");
+                    purchaseOneDayPass(id,balance);
+            }
+        }while(m!=0);
+    }
+    
+    private void purchaseZoneOneDayPass(String id, double balance){
+        try{
+            if(balance - 6.9 < 0 ){
+                throw new NoEnoughFundExcpetion("No enough Fund in your card");
+            }else{
+                UsersData.users.get(id).purchase(6.9);
+            }
+        }catch(NoEnoughFundExcpetion err){
+            System.err.println(err);
+            menuRun();
+        }
+    }
+    
+    private void purchaseZoneTwoDayPass(String id,double balance){
+        try{
+            if(balance - 9.8< 0 ){
+                throw new NoEnoughFundExcpetion("No enough Fund in your card");
+            }else{
+                UsersData.users.get(id).purchase(9.8);
+            }
+        }catch (NoEnoughFundExcpetion err){
+            System.err.println(err);
+            menuRun();
+        }
     }
 }

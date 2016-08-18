@@ -9,7 +9,5 @@ public class MyTiSystem {
     
     public static void checkUser(){
         menuStart();
-        
-        
     }
 }
