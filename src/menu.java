@@ -45,8 +45,8 @@ public class menu {
                     break;
 //                case 4: journeyPurchase();
 //                    break;
-                case 0: waitingForCustomer();
-                    break;
+//                case 0: waitingForCustomer();
+//                    break;
                 default:
                     System.out.println("Invalid Input, Try again.");
                     menuRun();
@@ -54,47 +54,47 @@ public class menu {
         }while(m!=0);
     }
     
-    private void travelPassPurchase(){
+    private void travelPassPurchase(){ //check user info
         String userID;
         System.out.print("Which card ID: ");
         userID = keyPad.nextLine();
         double balance = UsersData.checkUserID(userID);
         if(balance!=-1){
-            zoneChoose(userID,balance);
+            travelPassPurchaseMenu(userID,balance);
         }else {
             System.out.print("User ID not found. Try again.");
             menuRun();
         }
     }
     
-    private void zoneChoose(String userID,double balance){
+    private void purchaseTwoHoursPass(String userID,double balance){ //zone choose (2hours)
         int m;
         do{
             zoneMenu();
             m=keyPad.nextInt();
             switch (m){
-                case 1: purchaseTwoHoursPass(userID,balance);
+                case 1: purchaseZoneOneTwoHoursPass(userID,balance);
                     break;
-                case 2: purchaseOneDayPass(userID,balance);
+                case 2: purchaseZoneTwoTwoHoursPass(userID,balance);
                     break;
                 case 0: mainMenu();
                     break;
                 default:
                     System.out.println("Invalid Input, Try again.");
-                    zoneChoose(userID,balance);
+                    purchaseTwoHoursPass(userID,balance);
             }
         }while(m!=0);
     }
     
-    private void travelPassPurchaseMenu() {
+    private void travelPassPurchaseMenu(String id,double balance) { //purchase choose pass type
         int m;
         do{
             purchaseMenu();
             m = keyPad.nextInt();
             switch (m){
-                case 1: purchaseTwoHoursPass();
+                case 1: purchaseTwoHoursPass(id,balance);
                     break;
-                case 2: purchaseOneDayPass();
+                case 2: purchaseOneDayPass(id,balance);
                     break;
                 case 0: menuRun();
                     break;
@@ -105,11 +105,33 @@ public class menu {
         }while(m!=0);
     }
     
-    private void purchaseTwoHoursPass(String id,double balance){
+    private void purchaseZoneOneTwoHoursPass(String id,double balance){ //make purchase of 2hours zone1
         try{
-            if(balance - 3.9<0){
-                throw new NoEnoughFundException("No enough ")
+            if(balance - 3.5<0){
+                throw new NoEnoughFundExcpetion("No enough Fund in your card");
+            }else{
+                UsersData.users.get(id).purchase(3.5);
             }
-        }catch NoEnougntFundException()
+        }catch (NoEnoughFundExcpetion e){
+            System.err.println(e);
+            menuRun();
+        }
+    }
+    
+    private void purchaseZoneTwoTwoHoursPass(String id,double balance){
+        try{
+            if(balance - 5.0<0){
+                throw new NoEnoughFundExcpetion("No enough Fund in your card");
+            }else{
+                UsersData.users.get(id).purchase(5.0);
+            }
+        }catch (NoEnoughFundExcpetion err){
+            System.err.println(err);
+            menuRun();
+        }
+    }
+    
+    private void purchaseOneDayPass(String id,double balance){
+        
     }
 }

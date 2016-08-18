@@ -5,7 +5,7 @@ import java.util.HashMap;
  * Created by TonyZheng on 17/08/2016.
  */
 public class UsersData {
-    private static HashMap<String,Users> users = new HashMap<>();
+    static HashMap<String,Users> users = new HashMap<>();
     
     public void addNewUser(String id,String userName,String email,double balance){
         users.put(id,new Users(id,userName,email,balance));
@@ -16,7 +16,7 @@ public class UsersData {
     }
     
     
-    public static double checkUserID(String ID){
+/*    public static double checkUserID(String ID){
         String id = ID;
         double balance ;
         try{
@@ -25,6 +25,16 @@ public class UsersData {
             balance = -1;
         }
         return balance;
+    }*/
+    
+    public double checkUserID(String ID){
+        double balance = 0;
+        try{
+            balance = users.get(ID).getBalance();
+        }catch(Exception e){
+            System.err.println("Users not found, try again");
+            
+        }return balance;
     }
     
 }
