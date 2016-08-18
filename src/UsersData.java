@@ -1,10 +1,15 @@
+import TravelPass.TravelPass;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import Station.*;
 
 /**
  * Project APAss1,
  * Created by TonyZheng on 17/08/2016.
  */
 public class UsersData {
+    // this is users data storage
     static HashMap<String,Users> users = new HashMap<>();
     
     public void addNewUser(String id,String userName,String email,double balance){
@@ -37,6 +42,12 @@ public class UsersData {
         }return balance;
     }
     
+//    static Hashmap<String,> history = new HashMap<>();
     
+    // this is stations data storage
+    static HashMap<String,Station> station = new HashMap<>();
     
+    public void addStation(String name,int zone){
+        station.put(name,new Station(name,zone));
+    }
 }

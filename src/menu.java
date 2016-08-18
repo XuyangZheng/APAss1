@@ -26,6 +26,7 @@ public class menu {
         System.out.println("Which zone: ");
         System.out.println("1. Zone 1");
         System.out.println("2. Zone 1 and 2");
+//        System.out.println("3. Select by Station");
         System.out.println("0. Cancel");
     }
     
@@ -76,6 +77,8 @@ public class menu {
                 case 1: purchaseZoneOneTwoHoursPass(userID,balance);
                     break;
                 case 2: purchaseZoneTwoTwoHoursPass(userID,balance);
+                    break;
+                case 3: selectByStationTwoHoursPass(userID,balance);
                     break;
                 case 0: mainMenu();
                     break;
@@ -174,5 +177,9 @@ public class menu {
             System.err.println(err);
             menuRun();
         }
+    }
+    
+    public void selelcByStationTwoHoursPass(String id,double balance){
+        
     }
 }
