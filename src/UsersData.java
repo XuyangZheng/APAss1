@@ -46,8 +46,10 @@ public class UsersData {
     
     // this is stations data storage
     static HashMap<String,Station> station = new HashMap<>();
+    static ArrayList<String> stationsName = new ArrayList<>();
     
     public void addStation(String name,int zone){
         station.put(name,new Station(name,zone));
+        stationsName.add(name+"            "+zone);
     }
 }

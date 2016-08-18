@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Project APAss1,
@@ -40,10 +41,10 @@ public class menu {
             switch (m){
                 case 1: travelPassPurchase();
                     break;
-                case 2: chargeMyTiCard();
-                    break;
-                case 3: showCreditMenu();
-                    break;
+//                case 2: chargeMyTiCard();
+//                    break;
+//                case 3: showCreditMenu();
+//                    break;
 //                case 4: journeyPurchase();
 //                    break;
 //                case 0: waitingForCustomer();
@@ -179,7 +180,11 @@ public class menu {
         }
     }
     
-    public void selelcByStationTwoHoursPass(String id,double balance){
+    public void selectByStationTwoHoursPass(String id,double balance){
+        
+            
+            System.out.println(UsersData.station.get(UsersData.station.keySet()).getStationName());
+            
         
     }
 }

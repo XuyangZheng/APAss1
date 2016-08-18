@@ -55,7 +55,7 @@ public class data {
     }
 
     
-    public void writeDataToFile(String userName,double balance) { //I want to rewrite file in this method.
+/*    public void writeDataToFile(String userName,double balance) { //I want to rewrite file in this method.
         String user = userName;
         double addBalance = balance;
         double privousBalance = getBalalce(user);
@@ -71,5 +71,5 @@ public class data {
                 }
             }
         }
-    }
+    }*/
 }
