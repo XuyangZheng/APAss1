@@ -6,7 +6,7 @@ import java.util.stream.StreamSupport;
  * Project APAss1,
  * Created by TonyZheng on 16/8/9.
  */
-public class menu {
+public class Menu {
     private void mainMenu(){ //main menu
         System.out.println("Welcome to MyTi");
         System.out.println("Choose an option:");

@@ -9,7 +9,7 @@ import java.*;
  * Project APAss1,
  * Created by TonyZheng on 16/8/9.
  */
-public class data {
+public class Data {
     public static double readDataFromFile(String userName){ //this method is to read user file.
         String user = userName;
         double balance = -1;
