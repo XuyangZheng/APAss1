@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.StreamSupport;
 
 /**
  * Project APAss1,
@@ -41,8 +42,8 @@ public class menu {
             switch (m){
                 case 1: travelPassPurchase();
                     break;
-//                case 2: chargeMyTiCard();
-//                    break;
+                case 2: chargeMyTiCard();
+                    break;
 //                case 3: showCreditMenu();
 //                    break;
 //                case 4: journeyPurchase();
@@ -64,7 +65,7 @@ public class menu {
         if(balance!=-1){
             travelPassPurchaseMenu(userID,balance);
         }else {
-            System.out.print("User ID not found. Try again.");
+//            System.out.print("User ID not found. Try again.");
             menuRun();
         }
     }
@@ -79,8 +80,8 @@ public class menu {
                     break;
                 case 2: purchaseZoneTwoTwoHoursPass(userID,balance);
                     break;
-                case 3: selectByStationTwoHoursPass(userID,balance);
-                    break;
+//                case 3: selectByStationTwoHoursPass(userID,balance);
+//                    break;
                 case 0: mainMenu();
                     break;
                 default:
@@ -180,11 +181,47 @@ public class menu {
         }
     }
     
-    public void selectByStationTwoHoursPass(String id,double balance){
-        
-            
-            System.out.println(UsersData.station.get(UsersData.station.keySet()).getStationName());
-            
-        
+//    public void selectByStationTwoHoursPass(String id,double balance){
+//            System.out.println(UsersData.station.get(UsersData.station.keySet()).getStationName());
+//    }
+    
+    public void chargeMyTiCard(){ //check user id before TopUp
+        String userID;
+        System.out.print("Which card ID: ");
+        userID = keyPad.nextLine();
+        double balance = UsersData.checkUserID(userID);
+        if(balance!=-1){
+            confirmMyTiTopUp(userID,balance);
+        }else {
+//            System.out.print("User ID not found. Try again.");
+            menuRun();
+        }
     }
+    
+    public void confirmMyTiTopUp(String id,double balance){  //check if valid
+        try{
+            System.out.println("Your current balance is: " + balance + "$");
+            System.out.println("How much to TopUp:");
+            double amount = keyPad.nextInt();
+            if(amount%5!=0){
+                throw new TopUpException("You can only TopUp in precise multiples of $5.00");
+            }else if(amount+balance>100){
+                throw new OverAmountException("Your credit can not over $100");
+            }else{
+                UsersData.users.get(id).topUp(amount);
+            }
+        }catch (TopUpException err){
+            System.err.println(err);
+            System.err.println("Please try again");
+            confirmMyTiTopUp(id,balance);
+        }catch (OverAmountException errs){
+            System.err.println(errs);
+            System.err.println("Please try again");
+            confirmMyTiTopUp(id,balance);
+        }catch(Exception e){
+            System.err.println("Invalid input, Try again");
+            confirmMyTiTopUp(id,balance);
+        }
+    }
+    
 }

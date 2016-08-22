@@ -1,8 +1,11 @@
 import TravelPass.TravelPass;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import Station.*;
+
+import static java.lang.String.valueOf;
 
 /**
  * Project APAss1,
@@ -14,6 +17,9 @@ public class UsersData {
     
     public void addNewUser(String id,String userName,String email,double balance){
         users.put(id,new Users(id,userName,email,balance));
+        String s1 = id + "travel";
+        String s2 = id + "topUp";
+//        HashMap<String,TravelPass> (String.valueOf(s1)) = new HashMap<>();
     }
     
     public void addNewUser(String id,String userName,String email){
@@ -33,7 +39,7 @@ public class UsersData {
     }*/
     
     public static double checkUserID(String ID){
-        double balance = 0;
+        double balance = -1;
         try{
             balance = users.get(ID).getBalance();
         }catch(Exception e){
@@ -51,5 +57,13 @@ public class UsersData {
     public void addStation(String name,int zone){
         station.put(name,new Station(name,zone));
         stationsName.add(name+"            "+zone);
+    }
+    
+    public void travelHistory(String id,TravelPass travelPass){
+        
+    }
+    
+    public void topUpHistory(String id,double balance,Date date){
+        
     }
 }
